@@ -36,21 +36,42 @@ test('map', () => {
 });
 
 test('keys', () => {
-  const arr = ['a', , 'c'];
-  const keys = array.keys(arr);
+  const a = ['a', , 'c'];
+  const keys = array.keys(a);
   expect(keys.next().value).toBe(0);
   expect(keys.next().value).toBe(1);
   expect(keys.next().value).toBe(2);
 });
 
 test('forEach', () => {
-  const arr = [1, 2, 3];
+  const a = [1, 2, 3];
   let indexCount = 0;
   let sum = 0;
-  array.forEach(arr, (value, index, arr) => {
+
+  array.forEach(a, (value, index, arr) => {
     indexCount++;
     sum += value;
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
   });
+
   expect(indexCount).toBe(3);
   expect(sum).toBe(6);
+});
+
+test('join', () => {
+  const a = ['a', 'b', 'c'];
+  const str = array.join(a);
+  expect(typeof str).toBe('string');
+  expect(str).toBe('abc');
+});
+
+test('findIndex', () => {
+  const a = [1, 2, 3, 4, 3];
+  const index = array.findIndex(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value === 3;
+  });
+  expect(index).toBe(2);
 });

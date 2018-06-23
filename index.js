@@ -12,7 +12,11 @@ function filter(array) {}
 
 function find(array) {}
 
-function findIndex(array) {}
+function findIndex(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    if (cb(array[i], i, array)) return i;
+  }
+}
 
 function forEach(array, cb) {
   for (let i = 0; i < array.length; i++) {
@@ -28,7 +32,15 @@ function indexOf(array, value) {
   }
 }
 
-function join(array) {}
+function join(array) {
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i];
+  }
+
+  return result;
+}
 
 function keys(array) {
   const indexes = [];
