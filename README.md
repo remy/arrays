@@ -25,6 +25,15 @@ npm test -- --watch
 - Do not use any native [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - Use `for` loops to itterate and execute over arrays
 - For tests, I recommend start with the examples that MDN provide - [here's a full list by method](https://github.com/mdn/interactive-examples/tree/master/live-examples/js-examples/array)
+- Using native array methods _is allowed_ in tests, i.e.
+
+```js
+test('indexOf', () => {
+  const a = [1, 2, 3, 1];
+  expect(array.indexOf(a, 1)).toBe(a.indexOf(1));
+})
+```
+
 - To change the length of an array, you can set the `length` property, i.e.
 
 ```js
