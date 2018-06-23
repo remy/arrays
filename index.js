@@ -18,15 +18,33 @@ function forEach(array) {}
 
 function includes(array) {}
 
-function indexOf(array) {}
+function indexOf(array, value) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] == value) return i;
+  }
+}
 
 function join(array) {}
 
 function keys(array) {}
 
-function lastIndexOf(array) {}
+function lastIndexOf(array, value) {
+  let index = -1;
 
-function map(array) {}
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] == value) index = i;
+  }
+
+  return index;
+}
+
+function map(array, cb) {
+  for (var i = 0; i < array.length; i++) {
+    array[i] = cb(array[i], i);
+  }
+
+  return array;
+}
 
 function pop(array) {
   const res = array[array.length - 1];

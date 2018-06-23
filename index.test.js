@@ -13,3 +13,24 @@ test('push', () => {
   expect(length).toBe(3);
   expect(a).toEqual([1, 2, 4]);
 });
+
+test('indexOf', () => {
+  const a = [1, 2, 3, 4, 3];
+  const index = array.indexOf(a, 3);
+  expect(index).toBe(2);
+});
+
+test('lastIndexOf', () => {
+  const a = [1, 2, 3, 4, 3];
+  const index = array.lastIndexOf(a, 3);
+  expect(index).toBe(4);
+});
+
+test('map', () => {
+  const a = [1, 2, 3];
+  const mappedArray = array.map(a, (value, index) => {
+    return value * 2;
+  });
+  expect(mappedArray.length).toBe(3);
+  expect(mappedArray).toEqual([2, 4, 6]);
+});
