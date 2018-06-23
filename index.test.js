@@ -156,3 +156,17 @@ test('entries', () => {
   expect(keys.next().value).toEqual([1, ,]);
   expect(keys.next().value).toEqual([2, 'c']);
 });
+
+test('copyWithin', () => {
+  const a = [1, 2, 3, 4, 5];
+  array.copyWithin(a, 4, 0, 1);
+
+  expect(a).toEqual([1, 2, 3, 4, 1]);
+  expect(array.copyWithin(a, 3)).toBe(a.copyWithin(3));
+});
+
+test('concat', () => {
+  const a = [1, 2, 3, 4, 5];
+  const b = [6, 7, 8, 9, 10];
+  expect(array.concat(a, b)).toEqual(a.concat(b));
+});

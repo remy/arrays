@@ -1,6 +1,42 @@
-function concat(array) {}
+function concat(array, array2) {
+  const result = [];
 
-function copyWithin(array) {}
+  for (let i = 0; i < arguments.length; i++) {
+    const a = arguments[i];
+
+    for (var j = 0; j < a.length || 0; j++) {
+      result[result.length] = a[j];
+    }
+  }
+
+  return result;
+}
+
+function copyWithin(array, target, startIndex, endIndex) {
+  target = target || 0;
+  startIndex = startIndex || 0;
+  endIndex = endIndex || length;
+
+  if (!array[target]) return;
+
+  if (target < 0) {
+    target += length;
+  }
+
+  if (startIndex < 0) {
+    startIndex += length;
+  }
+
+  if (endIndex < 0) {
+    endIndex += length;
+  }
+
+  for (let i = startIndex; i < endIndex; i++) {
+    array[target] = array[i];
+  }
+
+  return array;
+}
 
 function entries(array) {
   const indexes = [];
