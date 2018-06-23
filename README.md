@@ -24,7 +24,14 @@ npm test -- --watch
 - Remember that some functions will [mutate the array](https://doesitmutate.xyz/) (where the original array is changed inline vs. returning a new array).
 - Do not use any native [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - Use `for` loops to execute over arrays
-- To change the length of an array, you can set the `length` property
+- To change the length of an array, you can set the `length` property, i.e.
+
+```js
+const a = [1,2,3];
+console.log(a.length); // 3
+a.length = 0;
+console.log(a.length); // 0
+```
 
 ## Example
 
