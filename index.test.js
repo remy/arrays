@@ -36,9 +36,21 @@ test('map', () => {
 });
 
 test('keys', () => {
-  var arr = ['a', , 'c'];
-  var keys = array.keys(arr);
+  const arr = ['a', , 'c'];
+  const keys = array.keys(arr);
   expect(keys.next().value).toBe(0);
   expect(keys.next().value).toBe(1);
   expect(keys.next().value).toBe(2);
+});
+
+test('forEach', () => {
+  const arr = [1, 2, 3];
+  let indexCount = 0;
+  let sum = 0;
+  array.forEach(arr, (value, index, arr) => {
+    indexCount++;
+    sum += value;
+  });
+  expect(indexCount).toBe(3);
+  expect(sum).toBe(6);
 });

@@ -14,7 +14,11 @@ function find(array) {}
 
 function findIndex(array) {}
 
-function forEach(array) {}
+function forEach(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    cb(array[i], i, array);
+  }
+}
 
 function includes(array) {}
 
@@ -60,7 +64,7 @@ function lastIndexOf(array, value) {
 
 function map(array, cb) {
   for (let i = 0; i < array.length; i++) {
-    array[i] = cb(array[i], i);
+    array[i] = cb(array[i], i, array);
   }
 
   return array;
