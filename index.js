@@ -19,19 +19,39 @@ function forEach(array) {}
 function includes(array) {}
 
 function indexOf(array, value) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] == value) return i;
   }
 }
 
 function join(array) {}
 
-function keys(array) {}
+function keys(array) {
+  const indexes = [];
+
+  function makeIterator(array) {
+    let nextIndex = 0;
+
+    return {
+      next: function() {
+        return nextIndex < array.length
+          ? { value: array[nextIndex++], done: false }
+          : { done: true };
+      },
+    };
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    indexes[i] = i;
+  }
+
+  return makeIterator(indexes);
+}
 
 function lastIndexOf(array, value) {
   let index = -1;
 
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] == value) index = i;
   }
 
@@ -39,7 +59,7 @@ function lastIndexOf(array, value) {
 }
 
 function map(array, cb) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     array[i] = cb(array[i], i);
   }
 

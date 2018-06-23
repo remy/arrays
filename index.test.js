@@ -34,3 +34,11 @@ test('map', () => {
   expect(mappedArray.length).toBe(3);
   expect(mappedArray).toEqual([2, 4, 6]);
 });
+
+test('keys', () => {
+  var arr = ['a', , 'c'];
+  var keys = array.keys(arr);
+  expect(keys.next().value).toBe(0);
+  expect(keys.next().value).toBe(1);
+  expect(keys.next().value).toBe(2);
+});
