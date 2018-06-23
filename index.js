@@ -4,7 +4,14 @@ function copyWithin(array) {}
 
 function entries(array) {}
 
-function every(array) {}
+function every(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (!cb(value, i, array)) return false;
+  }
+
+  return true;
+}
 
 function fill(array) {}
 

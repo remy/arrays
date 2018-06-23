@@ -122,3 +122,27 @@ test('filter', () => {
 
   expect(filtered).toEqual([2, 4]);
 });
+
+test('every', () => {
+  const a = [1, 2, 3, 4, 5];
+  const result = array.every(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value !== 0;
+  });
+  expect(result).toBe(true);
+
+  const resultPass = array.every(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value > 0;
+  });
+  expect(resultPass).toBe(true);
+
+  const resultEmpty = array.every([], (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value < 99;
+  });
+  expect(resultEmpty).toBe(true);
+});
