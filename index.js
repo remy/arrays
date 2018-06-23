@@ -15,12 +15,16 @@ function find(array, cb) {
     const value = array[i];
     if (cb(value, i, array)) return value;
   }
+
+  return undefined;
 }
 
 function findIndex(array, cb) {
   for (let i = 0; i < array.length; i++) {
     if (cb(array[i], i, array)) return i;
   }
+
+  return -1;
 }
 
 function forEach(array, cb) {
@@ -29,12 +33,19 @@ function forEach(array, cb) {
   }
 }
 
-function includes(array) {}
+function includes(array, value) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == value) return true;
+  }
+  return false;
+}
 
 function indexOf(array, value) {
   for (let i = 0; i < array.length; i++) {
     if (array[i] == value) return i;
   }
+
+  return -1;
 }
 
 function join(array) {

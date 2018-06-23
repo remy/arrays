@@ -18,6 +18,9 @@ test('indexOf', () => {
   const a = [1, 2, 3, 4, 3];
   const index = array.indexOf(a, 3);
   expect(index).toBe(2);
+
+  const indexNotfound = array.indexOf(a, 10);
+  expect(indexNotfound).toBe(-1);
 });
 
 test('lastIndexOf', () => {
@@ -68,12 +71,19 @@ test('join', () => {
 
 test('findIndex', () => {
   const a = [1, 2, 3, 4, 3];
-  const index = array.findIndex(a, (value, index, arr) => {
+  const indexFound = array.findIndex(a, (value, index, arr) => {
     expect(value).toBe(a[index]);
     expect(arr).toEqual(a);
     return value === 3;
   });
-  expect(index).toBe(2);
+  expect(indexFound).toBe(2);
+
+  const indexNotfound = array.findIndex(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value === 100;
+  });
+  expect(indexNotfound).toBe(-1);
 });
 
 test('find', () => {
@@ -84,4 +94,20 @@ test('find', () => {
     return index === 3;
   });
   expect(val).toBe(4);
+
+  const valNotfound = array.find(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return index === 100;
+  });
+  expect(valNotfound).toBe(undefined);
+});
+
+test('includes', () => {
+  const a = [1, 2, 3, 4, 3];
+  const val = array.includes(a, 4);
+  expect(val).toBe(true);
+
+  const valNotFound = array.includes(a, 10);
+  expect(valNotFound).toBe(false);
 });
