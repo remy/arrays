@@ -8,7 +8,16 @@ function every(array) {}
 
 function fill(array) {}
 
-function filter(array) {}
+function filter(array, cb) {
+  const newArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (cb(value, i, array)) newArray[newArray.length] = value;
+  }
+
+  return newArray;
+}
 
 function find(array, cb) {
   for (let i = 0; i < array.length; i++) {

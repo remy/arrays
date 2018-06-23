@@ -111,3 +111,14 @@ test('includes', () => {
   const valNotFound = array.includes(a, 10);
   expect(valNotFound).toBe(false);
 });
+
+test('filter', () => {
+  const a = [1, 2, 3, 4, 5];
+  const filtered = array.filter(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value % 2 == 0;
+  });
+
+  expect(filtered).toEqual([2, 4]);
+});
