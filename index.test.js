@@ -75,3 +75,13 @@ test('findIndex', () => {
   });
   expect(index).toBe(2);
 });
+
+test('find', () => {
+  const a = [1, 2, 3, 4, 3];
+  const val = array.find(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return index === 3;
+  });
+  expect(val).toBe(4);
+});

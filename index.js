@@ -10,7 +10,12 @@ function fill(array) {}
 
 function filter(array) {}
 
-function find(array) {}
+function find(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (cb(value, i, array)) return value;
+  }
+}
 
 function findIndex(array, cb) {
   for (let i = 0; i < array.length; i++) {
