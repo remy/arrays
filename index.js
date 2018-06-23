@@ -13,7 +13,31 @@ function every(array, cb) {
   return true;
 }
 
-function fill(array) {}
+function fill(array, value, startIndex, endIndex) {
+  const newArray = [];
+  const length = array.length;
+
+  startIndex = startIndex || 0;
+  endIndex = endIndex || length;
+
+  if (startIndex < 0) {
+    startIndex += length;
+  }
+
+  if (endIndex < 0) {
+    endIndex += length;
+  }
+
+  for (let i = 0; i < length; i++) {
+    if (i >= startIndex && i < endIndex) {
+      newArray[i] = value;
+    } else {
+      newArray[i] = array[i];
+    }
+  }
+
+  return newArray;
+}
 
 function filter(array, cb) {
   const newArray = [];

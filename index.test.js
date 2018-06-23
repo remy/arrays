@@ -146,3 +146,12 @@ test('every', () => {
   });
   expect(resultEmpty).toBe(true);
 });
+
+test('fill', () => {
+  const a = [1, 2, 3, 4, 5];
+  expect(array.fill(a, 9)).toEqual([9, 9, 9, 9, 9]);
+  expect(array.fill(a, 9, 0, 5)).toEqual([9, 9, 9, 9, 9]);
+  expect(array.fill(a, 9, 1, 2)).toEqual([1, 9, 3, 4, 5]);
+  expect(array.fill(a, 9, 2)).toEqual([1, 2, 9, 9, 9]);
+  expect(array.fill(a, 9, -4, -1)).toEqual([1, 9, 9, 9, 5]);
+});
