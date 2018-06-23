@@ -1,6 +1,8 @@
 # Array exercises
 
-This is an exercise to help understand array methods in JavaScript. The aim of the project is to add all (or most) of the missing array functions so that the tests pass.
+This is an exercise to help understand array methods in JavaScript. The aim of the project is to add all (or most) of the missing array functions and passing tests.
+
+By implementing the functions you'll get a better understanding as to how arrays work, but more importantly, writing tests for the arrays cements your understanding of _how_ to use the functions.
 
 The implementations do not need to be perfect (i.e. accounting for extreme cases), but you're welcome to add more tests to make your code more robust.
 
