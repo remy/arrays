@@ -2,7 +2,27 @@ function concat(array) {}
 
 function copyWithin(array) {}
 
-function entries(array) {}
+function entries(array) {
+  const indexes = [];
+
+  function makeIterator(array) {
+    let nextIndex = 0;
+
+    return {
+      next: function() {
+        return nextIndex < array.length
+          ? { value: array[nextIndex++], done: false }
+          : { done: true };
+      },
+    };
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    indexes[i] = [i, array[i]];
+  }
+
+  return makeIterator(indexes);
+}
 
 function every(array, cb) {
   for (let i = 0; i < array.length; i++) {

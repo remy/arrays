@@ -155,3 +155,11 @@ test('fill', () => {
   expect(array.fill(a, 9, 2)).toEqual([1, 2, 9, 9, 9]);
   expect(array.fill(a, 9, -4, -1)).toEqual([1, 9, 9, 9, 5]);
 });
+
+test('entries', () => {
+  const a = ['a', , 'c'];
+  const keys = array.entries(a);
+  expect(keys.next().value).toEqual([0, 'a']);
+  expect(keys.next().value).toEqual([1, ,]);
+  expect(keys.next().value).toEqual([2, 'c']);
+});
