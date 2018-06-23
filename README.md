@@ -11,7 +11,7 @@ The only requirement is that you do not use any native array methods (i.e. you c
 First clone (or download) this project, then from the directory, run the following commands. Note that you will need [node](https://nodejs.org) installed.
 
 ```sh
-git clone …
+git clone git@github.com:remy/arrays.git
 cd arrays
 npm ci # if this doesn't work, us npm install
 npm test -- --watch
