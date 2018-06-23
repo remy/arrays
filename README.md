@@ -23,7 +23,8 @@ npm test -- --watch
 
 - Remember that some functions will [mutate the array](https://doesitmutate.xyz/) (where the original array is changed inline vs. returning a new array).
 - Do not use any native [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-- Use `for` loops to execute over arrays
+- Use `for` loops to itterate and execute over arrays
+- For tests, I recommend start with the examples that MDN provide - [here's a full list by method](https://github.com/mdn/interactive-examples/tree/master/live-examples/js-examples/array)
 - To change the length of an array, you can set the `length` property, i.e.
 
 ```js
