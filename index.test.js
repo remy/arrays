@@ -16,17 +16,14 @@ test('push', () => {
 
 test('indexOf', () => {
   const a = [1, 2, 3, 4, 3];
-  const index = array.indexOf(a, 3);
-  expect(index).toBe(2);
-
-  const indexNotfound = array.indexOf(a, 10);
-  expect(indexNotfound).toBe(-1);
+  expect(a.indexOf(3)).toBe(array.indexOf(a, 3));
+  expect(a.indexOf(10)).toBe(array.indexOf(a, 10));
 });
 
 test('lastIndexOf', () => {
   const a = [1, 2, 3, 4, 3];
-  const index = array.lastIndexOf(a, 3);
-  expect(index).toBe(4);
+  expect(a.lastIndexOf(3)).toBe(array.lastIndexOf(a, 3));
+  expect(a.lastIndexOf(10)).toBe(array.lastIndexOf(a, 10));
 });
 
 test('map', () => {
@@ -64,9 +61,8 @@ test('forEach', () => {
 
 test('join', () => {
   const a = ['a', 'b', 'c'];
-  const str = array.join(a);
-  expect(typeof str).toBe('string');
-  expect(str).toBe('abc');
+  expect(a.join()).toBe(array.join(a));
+  expect(a.join(',')).toBe(array.join(a, ','));
 });
 
 test('findIndex', () => {
@@ -105,11 +101,8 @@ test('find', () => {
 
 test('includes', () => {
   const a = [1, 2, 3, 4, 3];
-  const val = array.includes(a, 4);
-  expect(val).toBe(true);
-
-  const valNotFound = array.includes(a, 10);
-  expect(valNotFound).toBe(false);
+  expect(a.includes(2)).toBe(array.includes(a, 2));
+  expect(a.includes(10)).toBe(array.includes(a, 10));
 });
 
 test('filter', () => {
@@ -149,11 +142,11 @@ test('every', () => {
 
 test('fill', () => {
   const a = [1, 2, 3, 4, 5];
-  expect(array.fill(a, 9)).toEqual([9, 9, 9, 9, 9]);
-  expect(array.fill(a, 9, 0, 5)).toEqual([9, 9, 9, 9, 9]);
-  expect(array.fill(a, 9, 1, 2)).toEqual([1, 9, 3, 4, 5]);
-  expect(array.fill(a, 9, 2)).toEqual([1, 2, 9, 9, 9]);
-  expect(array.fill(a, 9, -4, -1)).toEqual([1, 9, 9, 9, 5]);
+  expect(array.fill(a, 9)).toEqual(a.fill(9));
+  expect(array.fill(a, 9, 0, 5)).toEqual(a.fill(9, 0, 5));
+  expect(array.fill(a, 9, 1, 2)).toEqual(a.fill(9, 1, 2));
+  expect(array.fill(a, 9, 2)).toEqual(a.fill(9, 2));
+  expect(array.fill(a, 9, -4, -1)).toEqual(a.fill(9, -4, -1));
 });
 
 test('entries', () => {

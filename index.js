@@ -108,11 +108,15 @@ function indexOf(array, value) {
   return -1;
 }
 
-function join(array) {
+function join(array, str) {
+  str = str || ',';
   let result = '';
 
   for (let i = 0; i < array.length; i++) {
     result += array[i];
+    if (i < array.length - 1) {
+      result += str;
+    }
   }
 
   return result;
