@@ -149,7 +149,7 @@ function join(array, str) {
   let result = '';
 
   for (let i = 0; i < array.length; i++) {
-    result += array[i];
+    result += array[i].toString();
     if (i < array.length - 1) {
       result += str;
     }
@@ -220,21 +220,72 @@ function shift(array) {}
 
 function slice(array) {}
 
-function some(array) {}
+function some(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (cb(value, i, array)) return true;
+  }
+
+  return false;
+}
 
 function sort(array) {}
 
 function splice(array) {}
 
-function toLocaleString(array) {}
+function toLocaleString(array) {
+  const str = ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toLocaleString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return result;
+}
 
 function toSource(array) {}
 
-function toString(array) {}
+function toString(array) {
+  const str = ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return result;
+}
 
 function unshift(array) {}
 
-function values(array) {}
+function values(array) {
+  const values = [];
+
+  function makeIterator(array) {
+    let nextIndex = 0;
+
+    return {
+      next: function() {
+        return nextIndex < array.length
+          ? { value: array[nextIndex++], done: false }
+          : { done: true };
+      },
+    };
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    values[i] = array[i];
+  }
+
+  return makeIterator(values);
+}
 
 module.exports = {
   concat,

@@ -170,3 +170,45 @@ test('concat', () => {
   const b = [6, 7, 8, 9, 10];
   expect(array.concat(a, b)).toEqual(a.concat(b));
 });
+
+test('values', () => {
+  const a = ['a', , 'c'];
+  const values = array.values(a);
+  expect(values.next().value).toBe('a');
+  expect(values.next().value).toBe();
+  expect(values.next().value).toBe('c');
+});
+
+test('toString', () => {
+  const a = ['a', 'b', 'c'];
+  expect(a.toString()).toBe(array.toString(a));
+});
+
+test('toLocaleString', () => {
+  const a = ['a', 'b', 'c'];
+  expect(a.toLocaleString()).toBe(array.toLocaleString(a));
+});
+
+test('some', () => {
+  const a = [1, 2, 3, 4, 5];
+  const result = array.some(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value !== 0;
+  });
+  expect(result).toBe(true);
+
+  const resultPass = array.some(a, (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value > 0;
+  });
+  expect(resultPass).toBe(true);
+
+  const resultEmpty = array.some([], (value, index, arr) => {
+    expect(value).toBe(a[index]);
+    expect(arr).toEqual(a);
+    return value < 99;
+  });
+  expect(resultEmpty).toBe(false);
+});
