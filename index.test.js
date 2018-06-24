@@ -231,3 +231,11 @@ test('toSource', () => {
 
   expect(array.toSource(a)).toBe('[1,2,3]');
 });
+
+test('slice', () => {
+  const a = [1, 2, 3];
+
+  expect(array.slice(a)).toEqual(a.slice());
+  expect(array.slice(a, 1, 2)).toEqual(a.slice(1, 2));
+  expect(array.slice(a, -2, -1)).toEqual(a.slice(-2, -1));
+});

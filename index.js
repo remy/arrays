@@ -228,7 +228,26 @@ function shift(array) {
   return value;
 }
 
-function slice(array) {}
+function slice(array, startIndex, endIndex) {
+  const newArray = [];
+  const length = array.length;
+  startIndex = startIndex || 0;
+  endIndex = endIndex || length;
+
+  if (startIndex < 0) {
+    startIndex += length;
+  }
+
+  if (endIndex < 0) {
+    endIndex += length;
+  }
+
+  for (let i = startIndex; i < endIndex; i++) {
+    newArray[newArray.length] = array[i];
+  }
+
+  return newArray;
+}
 
 function some(array, cb) {
   for (let i = 0; i < array.length; i++) {
