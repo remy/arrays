@@ -270,7 +270,29 @@ function some(array, cb) {
 
 function sort(array) {}
 
-function splice(array) {}
+function splice(array, startIndex, count, value) {
+  const newArray = [];
+  const removed = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (i >= startIndex && count > 0) {
+      count--;
+      removed[removed.length] = array[i];
+
+      if (count == 0) {
+        for (var j = 0; j < arguments.length - 3; j++) {
+          newArray[newArray.length] = arguments[j + 3];
+        }
+      }
+    } else {
+      newArray[newArray.length] = array[i];
+    }
+  }
+
+  array = newArray;
+
+  return removed;
+}
 
 function toLocaleString(array) {
   const str = ',';

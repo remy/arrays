@@ -247,3 +247,11 @@ test('reverse', () => {
   expect(array.reverse(a)).toEqual(a.reverse());
   expect(array.reverse(b)).toEqual(b.reverse());
 });
+
+test('splice', () => {
+  const a = [1, 2, 3, 4, 5];
+
+  expect(array.splice(a)).toEqual(a.splice());
+  expect(array.splice(a, 1, 2)).toEqual(a.splice(1, 2));
+  expect(array.splice(a, -2, -1)).toEqual(a.splice(-2, -1));
+});
