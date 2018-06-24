@@ -216,7 +216,17 @@ function reduceRight(array) {}
 
 function reverse(array) {}
 
-function shift(array) {}
+function shift(array) {
+  const newArray = [];
+  let value = array[0];
+
+  for (let i = 1; i < array.length; i++) {
+    newArray[i - 1] = array[i];
+  }
+
+  array = newArray;
+  return value;
+}
 
 function slice(array) {}
 
@@ -247,7 +257,19 @@ function toLocaleString(array) {
   return result;
 }
 
-function toSource(array) {}
+function toSource(array) {
+  const str = ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return `[${result}]`;
+}
 
 function toString(array) {
   const str = ',';
@@ -263,7 +285,18 @@ function toString(array) {
   return result;
 }
 
-function unshift(array) {}
+function unshift(array, value) {
+  const newArray = [];
+
+  newArray[0] = value;
+
+  for (let i = 0; i < array.length; i++) {
+    newArray[i + 1] = array[i];
+  }
+
+  array = newArray;
+  return newArray.length;
+}
 
 function values(array) {
   const values = [];

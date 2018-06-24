@@ -212,3 +212,22 @@ test('some', () => {
   });
   expect(resultEmpty).toBe(false);
 });
+
+test('shift', () => {
+  const a = [1, 2, 3];
+
+  expect(array.shift(a)).toBe(a.shift());
+});
+
+test('unshift', () => {
+  const a = [1, 2, 3];
+
+  expect(array.unshift(a, 4)).toBe(a.unshift(4));
+  expect(array.unshift(a, 4).length).toBe(a.unshift(4).length);
+});
+
+test('toSource', () => {
+  const a = [1, 2, 3];
+
+  expect(array.toSource(a)).toBe('[1,2,3]');
+});
