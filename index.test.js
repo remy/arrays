@@ -239,3 +239,11 @@ test('slice', () => {
   expect(array.slice(a, 1, 2)).toEqual(a.slice(1, 2));
   expect(array.slice(a, -2, -1)).toEqual(a.slice(-2, -1));
 });
+
+test('reverse', () => {
+  const a = [1, 2, 3, 4, 5];
+  const b = [1, 2, 3, 4];
+
+  expect(array.reverse(a)).toEqual(a.reverse());
+  expect(array.reverse(b)).toEqual(b.reverse());
+});

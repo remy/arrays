@@ -214,7 +214,17 @@ function reduce(array) {}
 
 function reduceRight(array) {}
 
-function reverse(array) {}
+function reverse(array) {
+  let tmp;
+  for (let i = 0; i < array.length; i++) {
+    tmp = array[i];
+
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = tmp;
+  }
+
+  return array;
+}
 
 function shift(array) {
   const newArray = [];
