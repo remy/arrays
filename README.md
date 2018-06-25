@@ -19,7 +19,13 @@ npm ci # if this doesn't work, us npm install
 npm test -- --watch
 ```
 
-## Important tips
+## Coaching & Pull Request
+
+If you wish to get feedback on your code from someone, feel free to open a pull request on this repo, and in the comment of the pull request issue, make the request for that individual to do a review.
+
+Unless you've been explicitly asked to help, please don't provide unsolicited feedback. I'm sure it's meant with good intentions, but please respect this request.
+
+## Tips & Rules
 
 - Remember that some functions will [mutate the array](https://doesitmutate.xyz/) (where the original array is changed inline vs. returning a new array).
 - Do not use any native [array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
