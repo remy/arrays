@@ -1,32 +1,202 @@
-function concat(array) {}
+function concat(array, array2) {
+  const result = [];
 
-function copyWithin(array) {}
+  for (let i = 0; i < arguments.length; i++) {
+    const a = arguments[i];
 
-function entries(array) {}
+    for (var j = 0; j < a.length || 0; j++) {
+      result[result.length] = a[j];
+    }
+  }
 
-function every(array) {}
+  return result;
+}
 
-function fill(array) {}
+function copyWithin(array, target, startIndex, endIndex) {
+  target = target || 0;
+  startIndex = startIndex || 0;
+  endIndex = endIndex || length;
 
-function filter(array) {}
+  if (!array[target]) return;
 
-function find(array) {}
+  if (target < 0) {
+    target += length;
+  }
 
-function findIndex(array) {}
+  if (startIndex < 0) {
+    startIndex += length;
+  }
 
-function forEach(array) {}
+  if (endIndex < 0) {
+    endIndex += length;
+  }
 
-function includes(array) {}
+  for (let i = startIndex; i < endIndex; i++) {
+    array[target] = array[i];
+  }
 
-function indexOf(array) {}
+  return array;
+}
 
-function join(array) {}
+function entries(array) {
+  const indexes = [];
 
-function keys(array) {}
+  function makeIterator(array) {
+    let nextIndex = 0;
 
-function lastIndexOf(array) {}
+    return {
+      next: function() {
+        return nextIndex < array.length
+          ? { value: array[nextIndex++], done: false }
+          : { done: true };
+      },
+    };
+  }
 
-function map(array) {}
+  for (let i = 0; i < array.length; i++) {
+    indexes[i] = [i, array[i]];
+  }
+
+  return makeIterator(indexes);
+}
+
+function every(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (!cb(value, i, array)) return false;
+  }
+
+  return true;
+}
+
+function fill(array, value, startIndex, endIndex) {
+  const newArray = [];
+  const length = array.length;
+
+  startIndex = startIndex || 0;
+  endIndex = endIndex || length;
+
+  if (startIndex < 0) {
+    startIndex += length;
+  }
+
+  if (endIndex < 0) {
+    endIndex += length;
+  }
+
+  for (let i = 0; i < length; i++) {
+    if (i >= startIndex && i < endIndex) {
+      newArray[i] = value;
+    } else {
+      newArray[i] = array[i];
+    }
+  }
+
+  return newArray;
+}
+
+function filter(array, cb) {
+  const newArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (cb(value, i, array)) newArray[newArray.length] = value;
+  }
+
+  return newArray;
+}
+
+function find(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (cb(value, i, array)) return value;
+  }
+
+  return undefined;
+}
+
+function findIndex(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    if (cb(array[i], i, array)) return i;
+  }
+
+  return -1;
+}
+
+function forEach(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    cb(array[i], i, array);
+  }
+}
+
+function includes(array, value) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == value) return true;
+  }
+  return false;
+}
+
+function indexOf(array, value) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == value) return i;
+  }
+
+  return -1;
+}
+
+function join(array, str) {
+  str = str || ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return result;
+}
+
+function keys(array) {
+  const indexes = [];
+
+  function makeIterator(array) {
+    let nextIndex = 0;
+
+    return {
+      next: function() {
+        return nextIndex < array.length
+          ? { value: array[nextIndex++], done: false }
+          : { done: true };
+      },
+    };
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    indexes[i] = i;
+  }
+
+  return makeIterator(indexes);
+}
+
+function lastIndexOf(array, value) {
+  let index = -1;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == value) index = i;
+  }
+
+  return index;
+}
+
+function map(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    array[i] = cb(array[i], i, array);
+  }
+
+  return array;
+}
 
 function pop(array) {
   const res = array[array.length - 1];
@@ -44,27 +214,162 @@ function reduce(array) {}
 
 function reduceRight(array) {}
 
-function reverse(array) {}
+function reverse(array) {
+  let tmp;
+  for (let i = 0; i < array.length; i++) {
+    tmp = array[i];
 
-function shift(array) {}
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = tmp;
+  }
 
-function slice(array) {}
+  return array;
+}
 
-function some(array) {}
+function shift(array) {
+  const newArray = [];
+  let value = array[0];
+
+  for (let i = 1; i < array.length; i++) {
+    newArray[i - 1] = array[i];
+  }
+
+  array = newArray;
+  return value;
+}
+
+function slice(array, startIndex, endIndex) {
+  const newArray = [];
+  const length = array.length;
+  startIndex = startIndex || 0;
+  endIndex = endIndex || length;
+
+  if (startIndex < 0) {
+    startIndex += length;
+  }
+
+  if (endIndex < 0) {
+    endIndex += length;
+  }
+
+  for (let i = startIndex; i < endIndex; i++) {
+    newArray[newArray.length] = array[i];
+  }
+
+  return newArray;
+}
+
+function some(array, cb) {
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    if (cb(value, i, array)) return true;
+  }
+
+  return false;
+}
 
 function sort(array) {}
 
-function splice(array) {}
+function splice(array, startIndex, count, value) {
+  const newArray = [];
+  const removed = [];
 
-function toLocaleString(array) {}
+  for (let i = 0; i < array.length; i++) {
+    if (i >= startIndex && count > 0) {
+      count--;
+      removed[removed.length] = array[i];
 
-function toSource(array) {}
+      if (count == 0) {
+        for (var j = 0; j < arguments.length - 3; j++) {
+          newArray[newArray.length] = arguments[j + 3];
+        }
+      }
+    } else {
+      newArray[newArray.length] = array[i];
+    }
+  }
 
-function toString(array) {}
+  array = newArray;
 
-function unshift(array) {}
+  return removed;
+}
 
-function values(array) {}
+function toLocaleString(array) {
+  const str = ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toLocaleString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return result;
+}
+
+function toSource(array) {
+  const str = ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return `[${result}]`;
+}
+
+function toString(array) {
+  const str = ',';
+  let result = '';
+
+  for (let i = 0; i < array.length; i++) {
+    result += array[i].toString();
+    if (i < array.length - 1) {
+      result += str;
+    }
+  }
+
+  return result;
+}
+
+function unshift(array, value) {
+  const newArray = [];
+
+  newArray[0] = value;
+
+  for (let i = 0; i < array.length; i++) {
+    newArray[i + 1] = array[i];
+  }
+
+  array = newArray;
+  return newArray.length;
+}
+
+function values(array) {
+  const values = [];
+
+  function makeIterator(array) {
+    let nextIndex = 0;
+
+    return {
+      next: function() {
+        return nextIndex < array.length
+          ? { value: array[nextIndex++], done: false }
+          : { done: true };
+      },
+    };
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    values[i] = array[i];
+  }
+
+  return makeIterator(values);
+}
 
 module.exports = {
   concat,
