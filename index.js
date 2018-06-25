@@ -53,12 +53,16 @@ function reverse(array) {
 }
 
 function shift(array) {
+  let removedItem = undefined;
   if (array.length > 0) {
-    array.length = array.length - 1; //didn't know how to reduce the length. I looked a the example in pop
-    return array[0];
-  } else {
-    return undefined;
+    removedItem = array[0];
+    for (let i = 1; i < array.length; i++) {
+      array[i - 1] = array[i];
+    }
+    array.length = array.length - 1;
   }
+
+  return removedItem;
 }
 
 /**

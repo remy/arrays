@@ -24,8 +24,10 @@ test('shift', () => {
   const a = [1, 2, 3, 4];
   const b = array.shift(a);
   expect(b).toEqual(1);
-  // expect(a).toEqual([2, 3, 4]);
+  expect(a).toEqual([2, 3, 4]);
   //undefined if the array is empty
+  const c = array.shift([]);
+  expect(c).toEqual(undefined);
 });
 
 
