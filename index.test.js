@@ -118,15 +118,21 @@ test('filter', () => {
 
   var subtract2 = (n) => {
     const res = n - 2;
-    console.log(res);
     return res
   }
 
   const d = array.filter([1, 2, 3], subtract2);
-  console.log(d);
-
   const e = [1, 2, 3].filter(subtract2);
-  console.log(e);
-
   expect(d).toEqual(e);
-})
+});
+
+
+test('map', () => {
+  var add20 = (currentValue, index, array) => {
+    return currentValue + 20;
+  }
+
+  const a = [1, 2, 3, 4];
+  const b = array.map(a, add20);
+  expect(b).toEqual([21, 22, 23, 24]);
+});

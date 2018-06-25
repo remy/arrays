@@ -40,7 +40,14 @@ function keys(array) { }
 
 function lastIndexOf(array) { }
 
-function map(array) { }
+function map(array, callback) {
+  const newArray = [];
+  for (i = 0; i < array.length; i++) {
+    newArray.push(callback(array[i], i, array));
+  }
+
+  return newArray;
+}
 
 function pop(array) {
   const res = array[array.length - 1];
