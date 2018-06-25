@@ -8,7 +8,15 @@ function every(array) { }
 
 function fill(array) { }
 
-function filter(array) { }
+function filter(array, callback) {
+  const newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)) {
+      newArray.push(array[i]);
+    }
+  }
+  return newArray;
+}
 
 function find(array) { }
 

@@ -92,9 +92,7 @@ test('some - not found', () => { // can be many or none
 
 test('forEach', () => {
   var renameIntoFoo = (currentValue, index, array) => {
-    console.log(currentValue);
     currentValue = 'foo';
-    console.log(currentValue);
   };
 
   a = [1, 2, 3, 4];
@@ -103,4 +101,32 @@ test('forEach', () => {
 
   expect(b).toEqual(undefined);
 
+});
+
+
+test('filter', () => {
+  var higherThan5 = (currentValue, index, array) => {
+    return currentValue > 5;
+  }
+
+  const a = [1, 3, 5, 6, 2, 9];
+  const b = array.filter(a, higherThan5);
+  expect(b).toEqual([6, 9]);
+
+  const c = [1, 2, 3];
+  expect(array.filter(c, higherThan5)).toEqual([]);
+
+  var subtract2 = (n) => {
+    const res = n - 2;
+    console.log(res);
+    return res
+  }
+
+  const d = array.filter([1, 2, 3], subtract2);
+  console.log(d);
+
+  const e = [1, 2, 3].filter(subtract2);
+  console.log(e);
+
+  expect(d).toEqual(e);
 })
