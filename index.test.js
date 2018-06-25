@@ -88,3 +88,19 @@ test('some - not found', () => { // can be many or none
   const c = array.some(a, currentValue => currentValue === 5);
   expect(c).toEqual(false);
 });
+
+
+test('forEach', () => {
+  var renameIntoFoo = (currentValue, index, array) => {
+    console.log(currentValue);
+    currentValue = 'foo';
+    console.log(currentValue);
+  };
+
+  a = [1, 2, 3, 4];
+
+  const b = array.forEach(a, renameIntoFoo);
+
+  expect(b).toEqual(undefined);
+
+})
